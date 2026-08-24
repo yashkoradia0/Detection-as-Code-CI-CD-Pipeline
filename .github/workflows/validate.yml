@@ -7,7 +7,10 @@ on:
 jobs:
   test-the-guards:
     runs-on: ubuntu-latest
-    
+    env:
+      RUNREVEAL_TOKEN: ${{ secrets.RUNREVEAL_API_KEY }}
+      RUNREVEAL_WORKSPACE: ${{ secrets.RUNREVEAL_WORKSPACE }}
+      
     steps:
       - name: Grab the files
         uses: actions/checkout@v3
@@ -17,12 +20,9 @@ jobs:
           curl -L https://github.com/runreveal/homebrew-runreveal/releases/latest/download/runreveal-linux-amd64.tar.gz > runreveal.tar.gz
           tar -xvf runreveal.tar.gz
           chmod +x runreveal
-          
-      - name: Force Login
-        run: ./runreveal login --token ${{ secrets.RUNREVEAL_API_KEY }}
-        
+
       - name: Spell Check (Linting)
-        run: ./runreveal lint sigma sigma/ --token ${{ secrets.RUNREVEAL_API_KEY }}
+        run: ./runreveal lint sigma sigma/
 
       - name: Dress Rehearsal (Dry Run)
-        run: ./runreveal detections sync --dry-run -d sigma/ --token ${{ secrets.RUNREVEAL_API_KEY }}
+        run: ./runreveal detections sync --dry-run -d sigma/
