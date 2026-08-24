@@ -1,1 +1,27 @@
+name: Check The Security Guards
 
+on: 
+  pull_request:
+
+jobs:
+  test-the-guards:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Grab the files
+        uses: actions/checkout@v3
+
+      - name: Download the RunReveal tool
+        run: |
+          curl -L https://github.com/runreveal/homebrew-runreveal/releases/latest/download/runreveal-linux-amd64.tar.gz > runreveal.tar.gz
+          tar -xvf runreveal.tar.gz
+          chmod +x runreveal
+
+      - name: Log in with the Secret Password
+        run: ./runreveal configure --api-key ${{ secrets.RUNREVEAL_API_KEY }}
+
+      - name: Spell Check (Linting)
+        run: ./runreveal lint sigma sigma/
+
+      - name: Dress Rehearsal (Dry Run)
+        run: ./runreveal detections sync --dry-run -d sigma
