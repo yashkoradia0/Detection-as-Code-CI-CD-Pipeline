@@ -20,6 +20,7 @@ jobs:
           
       - name: Force Login
         run: ./runreveal login --token ${{ secrets.RUNREVEAL_API_KEY }}
+        
       - name: Spell Check (Linting)
         run: ./runreveal lint sigma sigma/ --token ${{ secrets.RUNREVEAL_API_KEY }}
 
