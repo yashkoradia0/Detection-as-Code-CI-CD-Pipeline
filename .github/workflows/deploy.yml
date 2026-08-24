@@ -18,7 +18,8 @@ jobs:
           tar -xvf runreveal.tar.gz
           chmod +x runreveal
 
+      - name: Force Login
+        run: ./runreveal configure --api-key ${{ secrets.RUNREVEAL_API_KEY }}
+
       - name: Send the guards to the real city (Sync)
-        env:
-          RUNREVEAL_TOKEN: ${{ secrets.RUNREVEAL_API_KEY }}
         run: ./runreveal detections sync -d sigma/
