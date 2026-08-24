@@ -2,6 +2,7 @@ name: Check The Security Guards
 
 on: 
   pull_request:
+    branches: [ main ]
 
 jobs:
   test-the-guards:
@@ -18,11 +19,11 @@ jobs:
           chmod +x runreveal
 
       - name: Spell Check (Linting)
-        run: ./runreveal lint sigma sigma/
         env:
           RUNREVEAL_TOKEN: ${{ secrets.RUNREVEAL_API_KEY }}
+        run: ./runreveal lint sigma sigma/
 
       - name: Dress Rehearsal (Dry Run)
-        run: ./runreveal detections sync --dry-run -d sigma/
         env:
           RUNREVEAL_TOKEN: ${{ secrets.RUNREVEAL_API_KEY }}
+        run: ./runreveal detections sync --dry-run -d sigma/
