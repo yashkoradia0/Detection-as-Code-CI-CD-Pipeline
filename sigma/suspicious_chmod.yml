@@ -2,8 +2,6 @@ title: Suspicious File Permission Change (chmod)
 id: a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6
 status: experimental
 description: Detects suspicious file permission changes using chmod, such as granting 777 permissions or making files in temporary directories executable.
-author: Yash Koradia
-date: 2026/08/30
 logsource:
   category: process_creation
   product: linux
