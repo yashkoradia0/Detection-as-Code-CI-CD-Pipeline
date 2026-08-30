@@ -20,7 +20,3 @@ The CI/CD framework completely removes the need for manual dashboard configurati
 2.  It executes a strict syntax check (linting) across both the `sigma/` and `sql/` directories.
 3.  A dress-rehearsal dry-run ensures the rule logic integrates perfectly without crashing the live environment.
 4.  Once peer-reviewed and merged, the **Deployment** workflow pushes the active rules directly to RunReveal, automatically wiring them to your designated notification channels.
-
-## Author
-
-Maintained by Yash Koradia.
