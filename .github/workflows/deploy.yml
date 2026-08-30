@@ -22,4 +22,4 @@ jobs:
           chmod +x runreveal
 
       - name: Send the guards to the real city (Sync)
-        run: ./runreveal detections sync -d sigma/
+        run: ./runreveal detections sync -d sigma/ -d sql/
