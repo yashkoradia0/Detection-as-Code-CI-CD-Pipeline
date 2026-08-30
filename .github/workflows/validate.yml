@@ -25,4 +25,4 @@ jobs:
         run: ./runreveal lint sigma sigma/
 
       - name: Dress Rehearsal (Dry Run)
-        run: ./runreveal detections sync --dry-run -d sigma/
+        run: ./runreveal detections sync --dry-run -d sigma/ -d sql/
