@@ -1,4 +1,4 @@
-name: ssh-brute-force
+name: ssh-bruteforce
 displayName: SSH Brute Force Detection
 description: Detects 3 or more failed SSH login attempts within 5 minutes.
 type: sql
