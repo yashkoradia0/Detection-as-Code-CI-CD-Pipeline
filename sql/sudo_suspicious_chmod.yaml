@@ -1,0 +1,13 @@
+name: sudo-suspicious-chmod
+displayName: Suspicious Sudo chmod Activity
+description: Detects a user escalating file permissions to 777 or making temp files executable via sudo.
+type: sql
+file: sudo_suspicious_chmod.sql
+categories:
+  - privilege_escalation
+  - execution
+schedule: "*/15 * * * *"
+severity: medium
+riskScore: 50
+notificationNames:
+  - security-alerts
